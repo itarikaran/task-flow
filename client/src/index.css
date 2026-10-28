@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f5f6fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.taskflow-shell {
+  background:
+    radial-gradient(ellipse at 80% -20%, rgba(232, 227, 255, 0.58), transparent 35%),
+    #f5f6fa;
+}
+
+.taskflow-sidebar {
+  background: #15172b;
+  color: #fff;
+  box-shadow: 8px 0 28px rgba(20, 23, 43, 0.08);
+}
+
+.brand-mark {
+  background: linear-gradient(145deg, #a78bfa, #7657e8);
+  box-shadow: 0 8px 20px rgba(124, 88, 230, 0.32);
+}
+
+.nav-active {
+  background: linear-gradient(100deg, rgba(139, 112, 245, 0.32), rgba(139, 112, 245, 0.12));
+  box-shadow: inset 3px 0 #a78bfa;
+}
+
+.main-panel {
+  max-width: 1720px;
+  margin-inline: auto;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #8060e8, #6946d5);
+  box-shadow: 0 7px 18px rgba(109, 75, 216, 0.23);
+}
+
+.primary-button:hover {
+  background: linear-gradient(135deg, #7452df, #5c3ac8);
+  box-shadow: 0 10px 22px rgba(109, 75, 216, 0.28);
+  transform: translateY(-1px);
+}
+
+.stat-card,
+.tasks-panel,
+.form-panel {
+  border: 1px solid #e9eaf1;
+  box-shadow: 0 8px 26px rgba(29, 35, 58, 0.045);
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  animation: rise-in 420ms ease both;
+}
+
+.stat-card::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #8b6ded, #c6b8ff);
+  content: "";
+  opacity: 0.75;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(29, 35, 58, 0.09);
+}
+
+.stat-card:nth-child(2) { animation-delay: 45ms; }
+.stat-card:nth-child(3) { animation-delay: 90ms; }
+.stat-card:nth-child(4) { animation-delay: 135ms; }
+
+.control,
+.form-panel input,
+.form-panel textarea,
+.form-panel select {
+  border: 1px solid #e3e5ed;
+  background-color: #fbfbfd;
+  color: #20263a;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.control:focus,
+.form-panel input:focus,
+.form-panel textarea:focus,
+.form-panel select:focus {
+  border-color: #9b83ef;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(139, 109, 237, 0.13);
+}
+
+.task-row {
+  border-bottom: 1px solid #f0f1f5;
+  animation: fade-in 280ms ease both;
+}
+
+.task-row:hover {
+  background: #faf9ff;
+}
+
+.priority-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: #f7f7fa;
+}
+
+.loading-banner,
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 14px;
+}
+
+.loading-banner {
+  border: 1px solid #e8e2ff;
+  background: #fbfaff;
+  color: #6c55b5;
+}
+
+.loading-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #8466e8;
+  box-shadow: 0 0 0 4px #eee9ff;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.error-banner {
+  border: 1px solid #fecaca;
+  background: #fff5f5;
+  color: #b42332;
+}
+
+.empty-icon {
+  color: #7558d7;
+  background: linear-gradient(145deg, #f0edff, #e7e1ff);
+}
+
+.overdue-callout {
+  border: 1px solid #ffd6c9;
+  background: linear-gradient(100deg, #fff4ef, #fffaf7);
+  color: #a83f25;
+}
+
+.overdue-callout strong {
+  color: #832d1a;
+}
+
+.task-view-active {
+  background: #211d3d;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(32, 27, 60, 0.16);
+}
+
+.task-views {
+  scrollbar-width: thin;
+  scrollbar-color: #d7d3e6 transparent;
+}
+
+.dashboard-overview,
+.groups-page {
+  animation: fade-in 260ms ease both;
+}
+
+.overview-card,
+.group-create-panel,
+.group-card {
+  border: 1px solid #e9eaf1;
+  box-shadow: 0 8px 26px rgba(29, 35, 58, 0.045);
+}
+
+.progress-value {
+  display: inline-flex;
+  min-width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: #f1edff;
+  color: #7052d2;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.group-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.group-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(29, 35, 58, 0.09);
+}
+
+.group-card-icon {
+  display: flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 19px;
+}
+
+.group-color-0 { background: #f0edff; color: #7557dc; }
+.group-color-1 { background: #e7f5f1; color: #328875; }
+.group-color-2 { background: #fff2e6; color: #c77c35; }
+.group-color-3 { background: #eaf1ff; color: #4f72c7; }
+
+.group-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #8b6ded;
+  box-shadow: 0 0 0 3px #f0edff;
+}
+
+.task-group-heading {
+  border-top: 1px solid #f0eff6;
+  background: #fbfaff;
+}
+
+.task-complete:focus-visible,
+.task-complete:focus {
+  outline: 3px solid rgba(72, 167, 124, 0.25);
+  outline-offset: 2px;
+}
+
+.due-date-overdue {
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: #fff0ed;
+  color: #bf3f2a;
+  font-weight: 700;
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  50% { opacity: 0.45; transform: scale(0.84); }
+}
+
+@media (min-width: 768px) {
+  .taskflow-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .taskflow-sidebar nav button {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .taskflow-sidebar {
+    padding-bottom: 12px;
+  }
+
+  .taskflow-sidebar > div:first-child {
+    padding-block: 16px 8px;
+  }
+
+  .taskflow-sidebar nav button {
+    justify-content: center;
+    padding: 10px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .taskflow-sidebar nav {
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .page-header {
+    padding-top: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

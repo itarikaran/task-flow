@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
   })
 );
 app.use(express.json());
@@ -333,9 +333,9 @@ async function startServer() {
       console.log("Initial sample tasks inserted.");
     }
 
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || 5000, () => {
       console.log(
-        `TaskFlow API running at http://localhost:${PORT}`
+        `TaskFlow API running at http://localhost:${process.env.PORT || 5000}`
       );
     });
   } catch (error) {
